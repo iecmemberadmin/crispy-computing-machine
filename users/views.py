@@ -7,11 +7,12 @@ from .serializers import ClubberSerializer
 
 # Create your views here.
 @api_view(['GET', 'POST'])
-class ClubberList(request):
+def ClubberList(request):
   if request.method == 'GET':
     clubbers = Clubber.objects.all()
     serializer = ClubberSerializer(clubbers, many=True)
     return Response(serializer.data)
+
   elif request.method == 'POST':
     serializer = ClubberSerializer(data=request.data)
     if serializer.is_valid():
@@ -20,7 +21,7 @@ class ClubberList(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-class ClubberDetail(request):
+def ClubberDetail(request,pk):
   try:
       clubber = Clubber.objects.get(pk=pk)
   except Clubber.DoesNotExist:
