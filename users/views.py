@@ -8,11 +8,11 @@ from .serializers import ClubberSerializer
 # Create your views here.
 @api_view(['GET', 'POST'])
 class ClubberList(request):
-  if request.method === 'GET':
+  if request.method == 'GET':
     clubbers = Clubber.objects.all()
     serializer = ClubberSerializer(clubbers, many=True)
     return Response(serializer.data)
-  elif request.method === 'POST':
+  elif request.method == 'POST':
     serializer = ClubberSerializer(data=request.data):
     if serializer.is_valid():
       serializer.save()
