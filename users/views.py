@@ -22,7 +22,7 @@ class ClubberList(request):
 @api_view(['GET', 'PUT', 'DELETE'])
 class ClubberDetail(request):
   try:
-      clubber = Clubber.objects.get(student_number=request.data.student_number, password=request.data.password)
+      clubber = Clubber.objects.get(pk=pk)
   except Clubber.DoesNotExist:
       return Response(status=status.HTTP_404_NOT_FOUND)
 
