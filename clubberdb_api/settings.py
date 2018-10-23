@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'bkw()k79q6j6o*y68gj1w%iz)rk*k$&3)7==vmpcs#xz-h!r33'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'clubberdb_api.wsgi.application'
 #}
 DATABASES = {
     'default': dj_database_url.config(
-        default='sqlite:////{0}'.format(os.path.join(BASE_DIR, 'db.sqlite3'))
+        default='postgres://sdcmiqwwdhuavf:ef5468b6567e38aed209c3f60ca6c5566a3a1e6385fe71341fdc46470627ace7@ec2-54-235-160-57.compute-1.amazonaws.com:5432/d38dsuv2tq12bv'
     )
 }
 
@@ -124,5 +124,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 STATIC_URL = '/static/'
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
