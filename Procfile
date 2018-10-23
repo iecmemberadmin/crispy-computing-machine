@@ -1,0 +1,1 @@
+web: gunicorn clubberdb_api.wsgi --log-file -
