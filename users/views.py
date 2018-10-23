@@ -13,7 +13,7 @@ class ClubberList(request):
     serializer = ClubberSerializer(clubbers, many=True)
     return Response(serializer.data)
   elif request.method == 'POST':
-    serializer = ClubberSerializer(data=request.data):
+    serializer = ClubberSerializer(data=request.data)
     if serializer.is_valid():
       serializer.save()
       return Response(serializer.data, status=status.HTTP_201_CREATED)
