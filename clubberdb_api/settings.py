@@ -26,7 +26,7 @@ SECRET_KEY = 'bkw()k79q6j6o*y68gj1w%iz)rk*k$&3)7==vmpcs#xz-h!r33'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', 'http://clubberdb.herokuapp.com']
 
 
 # Application definition
