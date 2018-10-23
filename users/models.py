@@ -17,3 +17,15 @@ class Clubber(models.Model):
 
   def __str__(self):
     return self.student_number
+
+class ClubberDetail(models.Model):
+  clubber = models.OneToOneField(Clubber, on_delete=models.CASCADE, primary_key=True)
+  first_name = models.CharField(max_length=100)
+  middle_name = models.CharField(max_length=100)
+  last_name = models.CharField(max_length=100)
+
+  class Meta:
+    ordering = ('clubber',)
+
+  def __str__(self):
+    return "%s %s %s" % (self.clubber, self.first_name, self.last_name)
