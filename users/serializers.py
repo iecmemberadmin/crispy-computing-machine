@@ -1,7 +1,12 @@
 from rest_framework import serializers
-from .models import Clubber
+from .models import Clubber, Authentication
 
 class ClubberSerializer(serializers.ModelSerializer):
     class Meta:
         model = Clubber
-        fields = ('student_number', 'password')
+        fields = ('student_number', 'first_name', 'middle_name', 'last_name')
+
+class AuthenticationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Authentication
+        fields = ('clubber', 'password')

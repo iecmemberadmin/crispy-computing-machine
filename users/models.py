@@ -10,22 +10,21 @@ from pygments.styles import get_all_styles
 
 class Clubber(models.Model):
   student_number = models.CharField(max_length=9, primary_key=True)
-  password = models.CharField(max_length=250)
-
-  class Meta:
-    ordering = ('student_number',)
-
-  def __str__(self):
-    return self.student_number
-
-class ClubberDetail(models.Model):
-  clubber = models.OneToOneField(Clubber, on_delete=models.CASCADE, primary_key=True)
   first_name = models.CharField(max_length=100)
   middle_name = models.CharField(max_length=100)
   last_name = models.CharField(max_length=100)
+
+  def __str__(self):
+    return "%s %s" % (self.student_number, self.last_name)
+
+class Authentication(models.Model): 
+  clubber = models.OneToOneField(Clubber, on_delete=models.CASCADE, primary_key=True)
+  password = models.CharField(max_length=250)
 
   class Meta:
     ordering = ('clubber',)
 
   def __str__(self):
-    return "%s %s %s" % (self.clubber, self.first_name, self.last_name)
+    return self.clubber.student_number
+
+

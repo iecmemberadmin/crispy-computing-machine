@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'bkw()k79q6j6o*y68gj1w%iz)rk*k$&3)7==vmpcs#xz-h!r33'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*', 'http://clubberdb.herokuapp.com']
 CORS_ORIGIN_ALLOW_ALL=True

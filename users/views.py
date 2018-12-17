@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Clubber
-from .serializers import ClubberSerializer
+from .models import Clubber, Authentication
+from .serializers import ClubberSerializer, AuthenticationSerializer
 
 # Create your views here.
 @api_view(['GET', 'POST'])
@@ -23,7 +23,7 @@ def ClubberList(request):
 @api_view(['GET', 'PUT', 'DELETE'])
 def ClubberDetail(request,pk):
   try:
-      clubber = Clubber.objects.get(student_number=pk, password=request.GET["password"])
+      clubber = Clubber.objects.get(student_number=pk)
   except Clubber.DoesNotExist:
       return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -40,4 +40,26 @@ def ClubberDetail(request,pk):
 
   elif request.method == 'DELETE':
       clubber.delete()
+      return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET', 'POST', 'PUT', 'DELETE'])
+def ConfirmAuthentication(request,pk):
+  try:
+      auth = Authentication.objects.get(clubber=pk, password=request.GET['password'])
+  except Authentication.DoesNotExist:
+      return Response(status=status.HTTP_404_NOT_FOUND)
+
+  if request.method == 'GET':
+      serializer = AuthenticationSerializer(auth)
+      return Response(serializer.data)
+
+  elif request.method == 'PUT':
+      serializer = AuthenticationSerializer(auth, data=request.data)
+      if serializer.is_valid():
+          serializer.save()
+          return Response(serializer.data)
+      return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+  elif request.method == 'DELETE':
+      auth.delete()
       return Response(status=status.HTTP_204_NO_CONTENT)
