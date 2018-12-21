@@ -10,20 +10,41 @@ from pygments.styles import get_all_styles
 
 class Clubber(models.Model):
   COMMITTEES = [
-    ('execomm', 'Executive'), 
-    ('acadcomm', 'Academics'), 
-    ('externals', 'External Affairs'), 
-    ('extracomm', 'Extracurricular Affairs'), 
-    ('fincomm', 'Finance'), 
-    ('Internal Affairs', 'Internal Affairs'), 
-    ('memcomm', 'Membership'), 
-    ('pubcomm', 'Publicity')
+    ('Executive', 'Executive'), 
+    ('Academics', 'Academics'), 
+    ('Externals', 'External Affairs'), 
+    ('Extracurricular', 'Extracurricular Affairs'), 
+    ('Finance', 'Finance'), 
+    ('Internals', 'Internal Affairs'), 
+    ('Membership', 'Membership'), 
+    ('Publicity', 'Publicity')
+  ]
+  POSITIONS = [
+    ('President', 'President'),
+    ('Vice President', 'Vice President'),
+    ('Executive Secretary', 'Executive Secretary'),
+    ('Associate Secretary', 'Associate Secretary'),
+    ('Director', 'Director'),
+    ('Project Manager', 'Project Manager'),
+    ('Member', 'Member')
   ]
   student_number = models.CharField(max_length=9, primary_key=True)
   first_name = models.CharField(max_length=100)
   middle_name = models.CharField(max_length=100)
   last_name = models.CharField(max_length=100)
+  nick_name = models.CharField(max_length=100)
   committee = models.CharField(max_length=100, choices=COMMITTEES, default='')
+  position = models.CharField(max_length=100, choices=POSITIONS, default='')
+  project = models.CharField(max_length=100)
+  birthday = models.DateField()
+  degree_program = models.CharField(max_length=100)
+  mobile_number = models.CharField(max_length=100)
+  email_address = models.CharField(max_length=100)
+  present_address = models.CharField(max_length=100)
+  permanent_address = models.CharField(max_length=100)
+  emergency_name = models.CharField(max_length=100)
+  emergency_relationship = models.CharField(max_length=100)
+  emergency_contact = models.CharField(max_length=100)
 
   def __str__(self):
     return "%s %s" % (self.student_number, self.last_name)
