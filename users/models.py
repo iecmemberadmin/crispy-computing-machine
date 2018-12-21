@@ -9,10 +9,21 @@ from pygments.styles import get_all_styles
 # Create your models here.
 
 class Clubber(models.Model):
+  COMMITTEES = [
+    ('execomm', 'Executive'), 
+    ('acadcomm', 'Academics'), 
+    ('externals', 'External Affairs'), 
+    ('extracomm', 'Extracurricular Affairs'), 
+    ('fincomm', 'Finance'), 
+    ('Internal Affairs', 'Internal Affairs'), 
+    ('memcomm', 'Membership'), 
+    ('pubcomm', 'Publicity')
+  ]
   student_number = models.CharField(max_length=9, primary_key=True)
   first_name = models.CharField(max_length=100)
   middle_name = models.CharField(max_length=100)
   last_name = models.CharField(max_length=100)
+  committee = models.CharField(max_length=100, choices=COMMITTEES, default='')
 
   def __str__(self):
     return "%s %s" % (self.student_number, self.last_name)
