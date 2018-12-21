@@ -12,10 +12,10 @@ class Clubber(models.Model):
   COMMITTEES = [
     ('Executive', 'Executive'), 
     ('Academics', 'Academics'), 
-    ('Externals', 'External Affairs'), 
-    ('Extracurricular', 'Extracurricular Affairs'), 
+    ('Externals', 'Externals'), 
+    ('Extracurricular', 'Extracurricular'), 
     ('Finance', 'Finance'), 
-    ('Internals', 'Internal Affairs'), 
+    ('Internals', 'Internals'), 
     ('Membership', 'Membership'), 
     ('Publicity', 'Publicity')
   ]
