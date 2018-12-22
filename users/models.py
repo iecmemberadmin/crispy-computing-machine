@@ -59,4 +59,13 @@ class Authentication(models.Model):
   def __str__(self):
     return self.clubber.student_number
 
+class Announcement(models.Model):
+  title = models.CharField(max_length=100)
+  body = models.TextField()
+  date_posted = models.DateTimeField(auto_now_add=True)
 
+  class Meta:
+    ordering = ('date_posted',)
+
+  def __str__(self):
+    return self.title

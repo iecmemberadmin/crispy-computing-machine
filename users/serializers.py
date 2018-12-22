@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Clubber, Authentication
+from .models import Clubber, Authentication, Announcement
 
 class ClubberSerializer(serializers.ModelSerializer):
     class Meta:
@@ -10,3 +10,8 @@ class AuthenticationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Authentication
         fields = ('clubber', 'password')
+
+class AnnouncementSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Announcement
+        fields = ('id','title', 'body', 'date_posted')
