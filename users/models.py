@@ -63,6 +63,7 @@ class Announcement(models.Model):
   title = models.CharField(max_length=100)
   body = models.TextField()
   date_posted = models.DateTimeField(auto_now_add=True)
+  tags = models.CharField(max_length=100)
 
   class Meta:
     ordering = ('date_posted',)
