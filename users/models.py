@@ -70,3 +70,25 @@ class Announcement(models.Model):
 
   def __str__(self):
     return self.title
+
+class Reaff(models.Model):
+  sem = models.CharField(max_length=100, primary_key=True)
+  active = models.BooleanField()
+
+  class Meta:
+    ordering = ('sem', )
+
+  def __str__(self):
+    return self.sem
+
+
+class ReaffedClubber(models.Model):
+  clubber = models.OneToOneField(Clubber, on_delete=models.CASCADE, primary_key=True)
+  last_name = models.CharField(max_length=100)
+  reaff = models.ForeignKey(Reaff, on_delete=models.CASCADE)
+  submitted_docs = models.BooleanField()
+  updated_db = models.BooleanField()
+  paid_fee = models.BooleanField()
+
+  def __str__(self):
+    return self.clubber
