@@ -9,7 +9,9 @@ urlpatterns = [
   path('clubbers/<str:pk>/', views.ClubberDetail),
   path('announcements/', views.AnnouncementList),
   path('proc/', views.ActiveProcessList),
-  path('proc/<str:pk>/', views.ActiveProcessDetail)
+  path('proc/<str:pk>/', views.ActiveProcessDetail),
+  path('reaff/', views.ReaffedClubbersList),
+  path('reaff/<str:pk>/', views.ReaffedClubberDetail)
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

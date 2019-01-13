@@ -77,3 +77,13 @@ class ActiveProcess(models.Model):
 
   def __str__(self):
     return self.name
+
+class ReaffedClubber(models.Model):
+  clubber = models.OneToOneField(Clubber, on_delete=models.CASCADE, primary_key=True)
+  last_name = models.CharField(max_length=100)
+  updated_db = models.BooleanField()
+  submitted_docs = models.BooleanField()
+  paid_fee = models.BooleanField()
+
+  def __str__(self):
+    return '%s %s' % (self.clubber.student_number, self.last_name)

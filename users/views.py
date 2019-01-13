@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Clubber, Authentication, Announcement, ActiveProcess
-from .serializers import ClubberSerializer, AuthenticationSerializer, AnnouncementSerializer, ActiveProcessSerializer
+from .models import Clubber, Authentication, Announcement, ActiveProcess, ReaffedClubber
+from .serializers import ClubberSerializer, AuthenticationSerializer, AnnouncementSerializer, ActiveProcessSerializer, ReaffedClubberSerializer
 
 # Create your views here.
 @api_view(['GET', 'POST'])
@@ -126,4 +126,40 @@ def ActiveProcessDetail(request,pk):
 
   elif request.method == 'DELETE':
       process.delete()
+      return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET', 'POST'])
+def ReaffedClubbersList(request):
+  if request.method == 'GET':
+    reaff = ReaffedClubber.objects.all()
+    serializer = ReaffedClubberSerializer(reaff, many=True)
+    return Response(serializer.data)
+
+  elif request.method == 'POST':
+    serializer = ReaffedClubberSerializer(data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def ReaffedClubberDetail(request,pk):
+  try:
+      reaff = ReaffedClubber.objects.get(clubber=pk)
+  except ReaffedClubber.DoesNotExist:
+      return Response(status=status.HTTP_404_NOT_FOUND)
+
+  if request.method == 'GET':
+      serializer = ReaffedClubberSerializer(reaff)
+      return Response(serializer.data)
+
+  elif request.method == 'PUT':
+      serializer = ReaffedClubberSerializer(reaff, data=request.data)
+      if serializer.is_valid():
+          serializer.save()
+          return Response(serializer.data)
+      return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+  elif request.method == 'DELETE':
+      reaff.delete()
       return Response(status=status.HTTP_204_NO_CONTENT)
