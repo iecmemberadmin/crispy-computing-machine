@@ -8,11 +8,8 @@ urlpatterns = [
   path('clubbers/', views.ClubberList),
   path('clubbers/<str:pk>/', views.ClubberDetail),
   path('announcements/', views.AnnouncementList),
-  path('reaff/', views.ReaffList),
-  path('reaff/<str:pk>/', views.ReaffDetail),
-  path('reaffed/', views.ReaffedClubberList),
-  path('reaffed/<str:pk>/', views.ReaffedClubberSemDetail),
-  path('reaffed/<str:sem>/<str:sn>/', views.ReaffedClubberDetail)
+  path('proc/', views.ActiveProcessList),
+  path('proc/<str:pk>/', views.ActiveProcessDetail)
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

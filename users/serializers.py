@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Clubber, Authentication, Announcement, Reaff, ReaffedClubber
+from .models import Clubber, Authentication, Announcement, ActiveProcess
 
 class ClubberSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,12 +16,7 @@ class AnnouncementSerializer(serializers.ModelSerializer):
         model = Announcement
         fields = ('id','title', 'body', 'date_posted')
 
-class ReaffSerializer(serializers.ModelSerializer):
+class ActiveProcessSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Reaff
-        fields = ('sem', 'active')
-
-class ReaffedClubberSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ReaffedClubber
-        fields = ('clubber', 'last_name', 'reaff', 'submitted_docs', 'updated_db', 'paid_fee')
+        model = ActiveProcess
+        fields = ('name', 'active')
