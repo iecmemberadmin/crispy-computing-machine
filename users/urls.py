@@ -10,6 +10,7 @@ urlpatterns = [
   path('announcements/', views.AnnouncementList),
   path('proc/', views.ActiveProcessList),
   path('proc/<str:pk>/', views.ActiveProcessDetail),
+  path('auth/', views.AuthenticationList),
   path('reaff/', views.ReaffedClubbersList),
   path('reaff/<str:pk>/', views.ReaffedClubberDetail)
 ]
