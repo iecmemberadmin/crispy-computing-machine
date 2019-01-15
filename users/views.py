@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Clubber, Authentication, Announcement, ActiveProcess, ReaffedClubber
-from .serializers import ClubberSerializer, AuthenticationSerializer, AnnouncementSerializer, ActiveProcessSerializer, ReaffedClubberSerializer
+from .models import Clubber, Authentication, Announcement, ActiveProcess, ReaffedClubber, Pending
+from .serializers import ClubberSerializer, AuthenticationSerializer, AnnouncementSerializer, ActiveProcessSerializer, ReaffedClubberSerializer, PendingSerializer
 
 # Create your views here.
 @api_view(['GET', 'POST'])
@@ -162,4 +162,40 @@ def ReaffedClubberDetail(request,pk):
 
   elif request.method == 'DELETE':
       reaff.delete()
+      return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET', 'POST'])
+def PendingList(request):
+  if request.method == 'GET':
+    pending = Pending.objects.all()
+    serializer = PendingSerializer(pending, many=True)
+    return Response(serializer.data)
+
+  elif request.method == 'POST':
+    serializer = PendingSerializer(data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def PendingDetail(request,pk):
+  try:
+      pending = Pending.objects.get(student_number=pk)
+  except Pending.DoesNotExist:
+      return Response(status=status.HTTP_404_NOT_FOUND)
+
+  if request.method == 'GET':
+      serializer = PendingSerializer(pending)
+      return Response(serializer.data)
+
+  elif request.method == 'PUT':
+      serializer = PendingSerializer(pending, data=request.data)
+      if serializer.is_valid():
+          serializer.save()
+          return Response(serializer.data)
+      return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+  elif request.method == 'DELETE':
+      pending.delete()
       return Response(status=status.HTTP_204_NO_CONTENT)

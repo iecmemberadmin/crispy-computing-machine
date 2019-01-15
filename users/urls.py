@@ -12,7 +12,9 @@ urlpatterns = [
   path('proc/<str:pk>/', views.ActiveProcessDetail),
   path('auth/', views.AuthenticationList),
   path('reaff/', views.ReaffedClubbersList),
-  path('reaff/<str:pk>/', views.ReaffedClubberDetail)
+  path('reaff/<str:pk>/', views.ReaffedClubberDetail),
+  path('pending/', views.PendingList), 
+  path('pending/<str:pk>/', views.PendingDetail)
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

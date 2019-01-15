@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import Clubber, Authentication, Announcement, ActiveProcess, ReaffedClubber
+from .models import Clubber, Authentication, Announcement, ActiveProcess, ReaffedClubber, Pending
 
 class ClubberSerializer(serializers.ModelSerializer):
     class Meta:
         model = Clubber
-        fields = ('student_number', 'first_name', 'middle_name', 'last_name', 'nick_name', 'committee', 'position', 'project', 'birthday', 'degree_program', 'mobile_number', 'email_address', 'permanent_address', 'present_address', 'emergency_name', 'emergency_relationship', 'emergency_contact')
+        fields = ('student_number', 'first_name', 'middle_name', 'last_name', 'nick_name', 'committee', 'position', 'project', 'birthday', 'degree_program', 'mobile_number', 'email_address', 'permanent_address', 'present_address', 'emergency_name', 'emergency_relationship', 'emergency_contact', 'carpool_capacity', 'av_equipment', 'sports_equipment', 'instruments')
 
 class AuthenticationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -25,3 +25,8 @@ class ReaffedClubberSerializer(serializers.ModelSerializer):
     class Meta:
         model = ReaffedClubber
         fields = ('clubber', 'last_name', 'updated_db', 'submitted_docs', 'paid_fee')
+
+class PendingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pending
+        fields = ('student_number', 'first_name', 'middle_name', 'last_name', 'nick_name', 'committee', 'position', 'project', 'birthday', 'degree_program', 'mobile_number', 'email_address', 'permanent_address', 'present_address', 'emergency_name', 'emergency_relationship', 'emergency_contact', 'carpool_capacity', 'av_equipment', 'sports_equipment', 'instruments','password')
