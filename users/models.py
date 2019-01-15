@@ -17,7 +17,8 @@ class Clubber(models.Model):
     ('Finance', 'Finance'), 
     ('Internals', 'Internals'), 
     ('Membership', 'Membership'), 
-    ('Publicity', 'Publicity')
+    ('Publicity', 'Publicity'),
+    ('TBA', 'TBA')
   ]
   POSITIONS = [
     ('President', 'President'),
@@ -26,7 +27,8 @@ class Clubber(models.Model):
     ('Associate Secretary', 'Associate Secretary'),
     ('Director', 'Director'),
     ('Project Manager', 'Project Manager'),
-    ('Member', 'Member')
+    ('Member', 'Member'),
+    ('TBA', 'TBA')
   ]
   student_number = models.CharField(max_length=9, primary_key=True)
   first_name = models.CharField(max_length=100)
@@ -101,7 +103,8 @@ class Pending(models.Model):
     ('Finance', 'Finance'), 
     ('Internals', 'Internals'), 
     ('Membership', 'Membership'), 
-    ('Publicity', 'Publicity')
+    ('Publicity', 'Publicity'),
+    ('TBA', 'TBA')
   ]
   POSITIONS = [
     ('President', 'President'),
@@ -110,7 +113,8 @@ class Pending(models.Model):
     ('Associate Secretary', 'Associate Secretary'),
     ('Director', 'Director'),
     ('Project Manager', 'Project Manager'),
-    ('Member', 'Member')
+    ('Member', 'Member'),
+    ('TBA', 'TBA')
   ]
   student_number = models.CharField(max_length=9, primary_key=True)
   first_name = models.CharField(max_length=100)
