@@ -4,7 +4,7 @@ from .models import Clubber, Authentication, Announcement, ActiveProcess, Reaffe
 class ClubberSerializer(serializers.ModelSerializer):
     class Meta:
         model = Clubber
-        fields = ('student_number', 'first_name', 'middle_name', 'last_name', 'nick_name', 'committee', 'position', 'project', 'birthday', 'degree_program', 'mobile_number', 'email_address', 'permanent_address', 'present_address', 'emergency_name', 'emergency_relationship', 'emergency_contact', 'carpool_capacity', 'av_equipment', 'sports_equipment', 'instruments')
+        fields = ('student_number', 'first_name', 'middle_name', 'last_name', 'nick_name', 'committee', 'position', 'project', 'birthday', 'degree_program', 'mobile_number', 'email_address', 'permanent_address', 'present_address', 'emergency_name', 'emergency_relationship', 'emergency_contact', 'carpool_capacity', 'av_equipment', 'sports_equipment', 'instruments', 'current_subjects', 'closest_friends', 'ieaid_company', 'ieaid_contactperson', 'ieaid_contactdetails', 'candy')
 
 class AuthenticationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,4 +29,4 @@ class ReaffedClubberSerializer(serializers.ModelSerializer):
 class PendingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pending
-        fields = ('student_number', 'first_name', 'middle_name', 'last_name', 'nick_name', 'committee', 'position', 'project', 'birthday', 'degree_program', 'mobile_number', 'email_address', 'permanent_address', 'present_address', 'emergency_name', 'emergency_relationship', 'emergency_contact', 'carpool_capacity', 'av_equipment', 'sports_equipment', 'instruments','password')
+        fields = ('student_number', 'first_name', 'middle_name', 'last_name', 'nick_name', 'committee', 'position', 'project', 'birthday', 'degree_program', 'mobile_number', 'email_address', 'permanent_address', 'present_address', 'emergency_name', 'emergency_relationship', 'emergency_contact', 'carpool_capacity', 'av_equipment', 'sports_equipment', 'instruments','password', 'current_subjects', 'closest_friends', 'ieaid_company', 'ieaid_contactperson', 'ieaid_contactdetails', 'candy')

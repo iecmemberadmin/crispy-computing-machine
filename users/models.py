@@ -30,6 +30,12 @@ class Clubber(models.Model):
     ('Member', 'Member'),
     ('TBA', 'TBA')
   ]
+  CANDIES = [
+    ('Chocnut', 'Chocnut'),
+    ('Choco Choco', 'Choco Choco'),
+    ('Flat Tops', 'Flat Tops'),
+    ('Potchi', 'Potchi')
+  ]
   student_number = models.CharField(max_length=9, primary_key=True)
   first_name = models.CharField(max_length=100)
   middle_name = models.CharField(max_length=100)
@@ -51,6 +57,12 @@ class Clubber(models.Model):
   av_equipment = models.CharField(max_length=100, default='')
   sports_equipment = models.CharField(max_length=100, default='')
   instruments = models.CharField(max_length=100, default='')
+  current_subjects = models.CharField(max_length=100, default='')
+  closest_friends = models.CharField(max_length=100, default='')
+  ieaid_company = models.CharField(max_length=100, default='')
+  ieaid_contactperson = models.CharField(max_length=100, default='')
+  ieaid_contactdetails = models.CharField(max_length=100, default='')
+  candy = models.CharField(max_length=100, choices=CANDIES, default='')
 
   def __str__(self):
     return "%s %s" % (self.student_number, self.last_name)
@@ -119,6 +131,12 @@ class Pending(models.Model):
     ('Member', 'Member'),
     ('TBA', 'TBA')
   ]
+  CANDIES = [
+    ('Chocnut', 'Chocnut'),
+    ('Choco Choco', 'Choco Choco'),
+    ('Flat Tops', 'Flat Tops'),
+    ('Potchi', 'Potchi')
+  ]
   student_number = models.CharField(max_length=9, primary_key=True)
   first_name = models.CharField(max_length=100)
   middle_name = models.CharField(max_length=100)
@@ -141,6 +159,12 @@ class Pending(models.Model):
   av_equipment = models.CharField(max_length=100, default='')
   sports_equipment = models.CharField(max_length=100, default='')
   instruments = models.CharField(max_length=100, default='')
+  current_subjects = models.CharField(max_length=100, default='')
+  closest_friends = models.CharField(max_length=100, default='')
+  ieaid_company = models.CharField(max_length=100, default='')
+  ieaid_contactperson = models.CharField(max_length=100, default='')
+  ieaid_contactdetails = models.CharField(max_length=100, default='')
+  candy = models.CharField(max_length=100, choices=CANDIES, default='')
 
   def __str__(self):
     return "%s %s" % (self.student_number, self.last_name)
