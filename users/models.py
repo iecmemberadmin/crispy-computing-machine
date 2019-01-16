@@ -90,6 +90,9 @@ class ReaffedClubber(models.Model):
   updated_db = models.BooleanField()
   submitted_docs = models.BooleanField()
   paid_fee = models.BooleanField()
+  read_contract = models.BooleanField(default=False)
+  ew_participation = models.BooleanField(default=False)
+  ew_jersey = models.BooleanField(default=False)
 
   def __str__(self):
     return '%s %s' % (self.clubber.student_number, self.last_name)
