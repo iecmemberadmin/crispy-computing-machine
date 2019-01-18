@@ -81,7 +81,7 @@ def AuthenticationList(request):
 @api_view(['GET', 'PUT', 'DELETE'])
 def AuthDetail(request,pk):
   try:
-      auth = Authentication.objects.get(student_number=pk)
+      auth = Authentication.objects.get(clubber=pk)
   except Authentication.DoesNotExist:
       return Response(status=status.HTTP_404_NOT_FOUND)
 
