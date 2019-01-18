@@ -11,6 +11,7 @@ urlpatterns = [
   path('proc/', views.ActiveProcessList),
   path('proc/<str:pk>/', views.ActiveProcessDetail),
   path('auth/', views.AuthenticationList),
+  path('auth/<str:pk>/', views.AuthDetail),
   path('reaff/', views.ReaffedClubbersList),
   path('reaff/<str:pk>/', views.ReaffedClubberDetail),
   path('pending/', views.PendingList), 
