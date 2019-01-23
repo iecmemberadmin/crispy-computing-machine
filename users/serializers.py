@@ -24,7 +24,7 @@ class ActiveProcessSerializer(serializers.ModelSerializer):
 class ReaffedClubberSerializer(serializers.ModelSerializer):
     class Meta:
         model = ReaffedClubber
-        fields = ('clubber', 'last_name', 'updated_db', 'submitted_docs', 'paid_fee', 'read_contract', 'ew_participation', 'ew_jersey')
+        fields = ('clubber', 'last_name', 'nick_name', 'updated_db', 'submitted_docs', 'paid_fee', 'read_contract', 'ew_participation', 'ew_jersey')
 
 class PendingSerializer(serializers.ModelSerializer):
     class Meta:

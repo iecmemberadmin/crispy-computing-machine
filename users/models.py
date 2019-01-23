@@ -99,6 +99,7 @@ class ActiveProcess(models.Model):
 class ReaffedClubber(models.Model):
   clubber = models.OneToOneField(Clubber, on_delete=models.CASCADE, primary_key=True)
   last_name = models.CharField(max_length=100)
+  nick_name = models.CharField(max_length=100, default='')
   updated_db = models.BooleanField()
   submitted_docs = models.BooleanField()
   paid_fee = models.BooleanField()
