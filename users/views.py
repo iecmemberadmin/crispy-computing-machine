@@ -261,12 +261,8 @@ def EventDetail(request):
 
 @api_view(['GET', 'POST'])
 def AttendanceList(request):
-  try:
-      attendance = Attendance.objects.filter(event=request.GET['event'])
-  except Attendance.DoesNotExist:
-      return Response(status=status.HTTP_404_NOT_FOUND)
-
   if request.method == 'GET':
+    attendance = Attendance.objects.filter(event=request.GET['event'])
     serializer = AttendanceSerializer(attendance, many=True)
     return Response(serializer.data)
 
