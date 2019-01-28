@@ -257,3 +257,44 @@ def EventDetail(request):
   elif request.method == 'DELETE':
       event.delete()
       return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET', 'POST'])
+def AttendanceList(request):
+  try:
+      attendance = Attendance.objects.filter(event=request.GET['event'])
+  except Attendance.DoesNotExist:
+      return Response(status=status.HTTP_404_NOT_FOUND)
+
+  if request.method == 'GET':
+    serializer = AttendanceSerializer(attendance, many=True)
+    return Response(serializer.data)
+
+  elif request.method == 'POST':
+    serializer = EventSerializer(data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def EventDetail(request):
+  try:
+      attendance = Attendance.objects.get(event=request.GET['event'], clubber=request.GET['clubber'])
+  except Attendance.DoesNotExist:
+      return Response(status=status.HTTP_404_NOT_FOUND)
+
+  if request.method == 'GET':
+      serializer = AttendanceSerializer(attendance)
+      return Response(serializer.data)
+
+  elif request.method == 'PUT':
+      serializer = AttendanceSerializer(attendance, data=request.data)
+      if serializer.is_valid():
+          serializer.save()
+          return Response(serializer.data)
+      return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+  elif request.method == 'DELETE':
+      attendance.delete()
+      return Response(status=status.HTTP_204_NO_CONTENT)
