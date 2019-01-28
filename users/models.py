@@ -169,3 +169,20 @@ class Pending(models.Model):
 
   def __str__(self):
     return "%s %s" % (self.student_number, self.last_name)
+
+class Event(models.Model):
+  name = models.CharField(max_length=255, primary_key=True)
+  date = models.DateTimeField()
+  location = models.CharField(max_length=255)
+
+  def __str__(self):
+    return self.name
+
+
+class Attendance(models.Model):
+  event = models.ForeignKey(Event, on_delete=models.CASCADE)
+  clubber = models.OneToOneField(Clubber, on_delete=models.CASCADE, primary_key=True)
+  name = models.CharField(max_length=255)
+  
+  def __str__(self):
+    return "%s: %s" % (self.event, self.clubber)

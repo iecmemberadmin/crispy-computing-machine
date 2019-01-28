@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Clubber, Authentication, Announcement, ActiveProcess, ReaffedClubber, Pending
+from .models import Clubber, Authentication, Announcement, ActiveProcess, ReaffedClubber, Pending, Event, Attendance
 
 class ClubberSerializer(serializers.ModelSerializer):
     class Meta:
@@ -30,3 +30,13 @@ class PendingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pending
         fields = ('student_number', 'first_name', 'middle_name', 'last_name', 'nick_name', 'committee', 'position', 'project', 'birthday', 'degree_program', 'mobile_number', 'email_address', 'permanent_address', 'present_address', 'emergency_name', 'emergency_relationship', 'emergency_contact', 'carpool_capacity', 'av_equipment', 'sports_equipment', 'instruments','password', 'current_subjects', 'closest_friends', 'ieaid_company', 'ieaid_contactperson', 'ieaid_contactdetails', 'candy')
+
+class EventSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Event
+        fields = ('name', 'date', 'location')
+
+class AttendanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Attendance
+        fields = ('event', 'clubber', 'name')
