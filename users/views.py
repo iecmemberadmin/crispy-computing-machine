@@ -278,7 +278,7 @@ def AttendanceList(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def EventDetail(request):
+def AttendanceDetail(request):
   try:
       attendance = Attendance.objects.get(event=request.GET['event'], clubber=request.GET['clubber'])
   except Attendance.DoesNotExist:

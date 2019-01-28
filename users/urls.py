@@ -17,7 +17,9 @@ urlpatterns = [
   path('pending/', views.PendingList), 
   path('pending/<str:pk>/', views.PendingDetail),
   path('events/', views.EventList),
-  path('events/detail/', views.EventDetail)
+  path('events/detail/', views.EventDetail),
+  path('attendance/', views.AttendanceList),
+  path('attendance/detail/', views.AttendanceDetail)
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
