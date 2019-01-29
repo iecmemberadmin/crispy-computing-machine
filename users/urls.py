@@ -20,8 +20,8 @@ urlpatterns = [
   path('events/detail/', views.EventDetail),
   path('attendance/', views.AttendanceList),
   path('attendance/detail/', views.AttendanceDetail),
-  path('auth/admin/', views.AdminList),
-  path('auth/admin/<str:pk>/', views.ConfirmAdmin)
+  path('adminauth/', views.AdminList),
+  path('adminauth/<str:pk>/', views.ConfirmAdmin)
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
