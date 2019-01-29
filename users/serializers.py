@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Clubber, Authentication, Announcement, ActiveProcess, ReaffedClubber, Pending, Event, Attendance
+from .models import Clubber, Authentication, Announcement, ActiveProcess, ReaffedClubber, Pending, Event, Attendance, Admin
 
 class ClubberSerializer(serializers.ModelSerializer):
     class Meta:
@@ -40,3 +40,8 @@ class AttendanceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Attendance
         fields = ('event', 'clubber', 'name')
+
+class AdminSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Admin
+        fields = ('username', 'password')

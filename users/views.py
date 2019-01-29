@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Clubber, Authentication, Announcement, ActiveProcess, ReaffedClubber, Pending, Event, Attendance
-from .serializers import ClubberSerializer, AuthenticationSerializer, AnnouncementSerializer, ActiveProcessSerializer, ReaffedClubberSerializer, PendingSerializer, EventSerializer, AttendanceSerializer
+from .models import Clubber, Authentication, Announcement, ActiveProcess, ReaffedClubber, Pending, Event, Attendance, Admin
+from .serializers import ClubberSerializer, AuthenticationSerializer, AnnouncementSerializer, ActiveProcessSerializer, ReaffedClubberSerializer, PendingSerializer, EventSerializer, AttendanceSerializer, AdminSerializer
 
 # Create your views here.
 @api_view(['GET', 'POST'])
@@ -294,3 +294,39 @@ def AttendanceDetail(request):
   elif request.method == 'DELETE':
       attendance.delete()
       return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET', 'POST', 'PUT', 'DELETE'])
+def ConfirmAdmin(request,pk):
+  try:
+      admin = Admin.objects.get(username=pk, password=request.GET['password'])
+  except Admin.DoesNotExist:
+      return Response(status=status.HTTP_404_NOT_FOUND)
+
+  if request.method == 'GET':
+      serializer = AdminSerializer(admin)
+      return Response(serializer.data)
+
+  elif request.method == 'PUT':
+      serializer = AdminSerializer(admin, data=request.data)
+      if serializer.is_valid():
+          serializer.save()
+          return Response(serializer.data)
+      return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+  elif request.method == 'DELETE':
+      admin.delete()
+      return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET', 'POST', 'PUT', 'DELETE'])
+def AdminList(request): 
+  if request.method == 'GET':
+    admins = Admin.objects.all()
+    serializer = AdminSerializer(admins, many=True)
+    return Response(serializer.data)
+
+  elif request.method == 'POST':
+    serializer = AdminSerializer(data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -186,3 +186,11 @@ class Attendance(models.Model):
   
   def __str__(self):
     return "%s: %s" % (self.event, self.clubber)
+
+class Admin(models.Model):
+  username = models.CharField(max_length=255)
+  password = models.CharField(max_length=255)
+
+  def __str__(self):
+    return self.username
+    

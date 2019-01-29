@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Clubber, Authentication, Announcement, ActiveProcess, ReaffedClubber, Pending, Event, Attendance
+from . models import Clubber, Authentication, Announcement, ActiveProcess, ReaffedClubber, Pending, Event, Attendance, Admin
 
 # Register your models here.
 admin.site.register(Clubber)
@@ -10,3 +10,4 @@ admin.site.register(ReaffedClubber)
 admin.site.register(Pending)
 admin.site.register(Event)
 admin.site.register(Attendance)
+admin.site.register(Admin)
