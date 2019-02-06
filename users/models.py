@@ -181,7 +181,7 @@ class Event(models.Model):
 
 class Attendance(models.Model):
   event = models.ForeignKey(Event, on_delete=models.CASCADE)
-  clubber = models.OneToOneField(Clubber, on_delete=models.CASCADE, primary_key=True)
+  clubber = models.OneToOneField(Clubber, on_delete=models.CASCADE)
   name = models.CharField(max_length=255)
   
   def __str__(self):
