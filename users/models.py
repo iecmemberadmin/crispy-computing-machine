@@ -180,15 +180,16 @@ class Event(models.Model):
 
 
 class Attendance(models.Model):
+  eventclubber = models.CharField(max_length=255, primary_key=True)
   event = models.ForeignKey(Event, on_delete=models.CASCADE)
-  clubber = models.OneToOneField(Clubber, on_delete=models.CASCADE)
+  clubber = models.ForeignKey(Clubber, on_delete=models.CASCADE)
   name = models.CharField(max_length=255)
   
+  class Meta: 
+    unique_together = (('event', 'clubber'),)
+
   def __str__(self):
     return "%s: %s" % (self.event, self.clubber)
-
-  class Meta: 
-    unique_together = ('event', 'clubber')
 
 class Admin(models.Model):
   username = models.CharField(max_length=255)

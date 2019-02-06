@@ -20,6 +20,7 @@ urlpatterns = [
   path('events/detail/', views.EventDetail),
   path('attendance/', views.AttendanceList),
   path('attendance/detail/', views.AttendanceDetail),
+  path('attendance/all/', views.AttendanceListAll),
   path('adminauth/', views.AdminList),
   path('adminauth/<str:pk>/', views.ConfirmAdmin)
 ]
