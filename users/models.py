@@ -179,17 +179,6 @@ class Event(models.Model):
     return self.name
 
 
-class Attendance(models.Model):
-  event = models.ForeignKey(Event, on_delete=models.CASCADE)
-  clubber = models.ForeignKey(Clubber, on_delete=models.CASCADE)
-  name = models.CharField(max_length=255)
-  
-  class Meta: 
-    unique_together = (('event', 'clubber'),)
-
-  def __str__(self):
-    return "%s: %s" % (self.event, self.clubber)
-
 class AttendanceNew(models.Model):
   event = models.ForeignKey(Event, on_delete=models.CASCADE)
   clubber = models.ForeignKey(Clubber, on_delete=models.CASCADE)
