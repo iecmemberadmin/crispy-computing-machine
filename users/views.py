@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Clubber, Authentication, Announcement, ActiveProcess, ReaffedClubber, Pending, Event, Admin, Attendance
+from .models import Clubber, Authentication, Announcement, ActiveProcess, ReaffedClubber, Pending, Event, Admin, AttendanceNew
 from .serializers import ClubberSerializer, AuthenticationSerializer, AnnouncementSerializer, ActiveProcessSerializer, ReaffedClubberSerializer, PendingSerializer, EventSerializer, AdminSerializer, AttendanceSerializer
 
 # Create your views here.
@@ -261,7 +261,7 @@ def EventDetail(request):
 @api_view(['GET', 'POST'])
 def AttendanceListAll(request):
   if request.method == 'GET':
-    attendance = Attendance.objects.all()
+    attendance = AttendanceNew.objects.all()
     serializer = AttendanceSerializer(attendance, many=True)
     return Response(serializer.data)
 
@@ -276,7 +276,7 @@ def AttendanceListAll(request):
 @api_view(['GET', 'POST'])
 def AttendanceList(request):
   if request.method == 'GET':
-    attendance = Attendance.objects.filter(event=request.GET['event'])
+    attendance = AttendanceNew.objects.filter(event=request.GET['event'])
     serializer = AttendanceSerializer(attendance, many=True)
     return Response(serializer.data)
 
@@ -290,8 +290,8 @@ def AttendanceList(request):
 @api_view(['GET', 'PUT', 'DELETE'])
 def AttendanceDetail(request):
   try:
-      attendance = Attendance.objects.get(event=request.GET['event'], clubber=request.GET['clubber'])
-  except Attendance.DoesNotExist:
+      attendance = AttendanceNew.objects.get(event=request.GET['event'], clubber=request.GET['clubber'])
+  except AttendanceNew.DoesNotExist:
       return Response(status=status.HTTP_404_NOT_FOUND)
 
   if request.method == 'GET':
