@@ -39,7 +39,7 @@ class EventSerializer(serializers.ModelSerializer):
 class AttendanceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Attendance
-        fields = ('eventclubber','event', 'clubber', 'name',)
+        fields = ('event', 'clubber', 'name',)
 
 class AdminSerializer(serializers.ModelSerializer):
     class Meta:
