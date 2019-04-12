@@ -39,3 +39,14 @@ class Position(models.Model):
   def __str__(self):
     return "(%s) %s - %s" % (self.committee, self.level, self.project)
 
+class Application(models.Model):
+  committee = models.CharField(max_length=100)
+  level = models.CharField(max_length=100)
+  project = models.CharField(max_length=100)
+  name = models.CharField(max_length=250)
+  student_number = models.CharField(max_length=250)
+
+  def __str__(self):
+    return "(%s) %s - %s: %s" % (self.committee, self.level, self.project, self.name)
+
+
