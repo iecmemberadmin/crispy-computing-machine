@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'users',
-    'curriculumchecker'
+    'rainbox',
+    'primer'
 ]
 
 MIDDLEWARE = [
