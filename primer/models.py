@@ -49,4 +49,9 @@ class Application(models.Model):
   def __str__(self):
     return "(%s) %s - %s: %s" % (self.committee, self.level, self.project, self.name)
 
+class Question(models.Model):
+  question = models.CharField(max_length=250)
+  description = models.TextField(blank=True)
 
+  def __str__(self):
+    return self.question

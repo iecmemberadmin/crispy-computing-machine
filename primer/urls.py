@@ -7,7 +7,9 @@ urlpatterns = [
   path('positions/detail/', views.PositionDetail),
   path('applications/all/', views.ApplicationList),
   path('applications/detail/', views.ApplicationDetail),
-  path('applications/user/', views.ApplicationUserDetail)
+  path('applications/user/', views.ApplicationUserDetail),
+  path('questions/all/', views.QuestionList),
+  path('questions/detail/', views.QuestionDetail),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
