@@ -9,7 +9,7 @@ class PositionSerializer(serializers.ModelSerializer):
 class ApplicationSerializer(serializers.ModelSerializer):
   class Meta:
     model = Application
-    fields = ('id', 'committee', 'level', 'project', 'name', 'student_number')
+    fields = ('id', 'committee', 'level', 'project', 'name', 'student_number', 'answers')
 
 class QuestionSerializer(serializers.ModelSerializer): 
   class Meta:

@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.postgres.fields import ArrayField
+from django.contrib.postgres.fields import ArrayField, JSONField
 
 # Create your models here.
 
@@ -45,6 +45,7 @@ class Application(models.Model):
   project = models.CharField(max_length=100)
   name = models.CharField(max_length=250)
   student_number = models.CharField(max_length=250)
+  answers = JSONField(blank=True, default=dict)
 
   def __str__(self):
     return "(%s) %s - %s: %s" % (self.committee, self.level, self.project, self.name)
